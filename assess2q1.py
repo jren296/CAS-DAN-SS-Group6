@@ -5,17 +5,18 @@ def encrypt_text(input_text, output_text, n, m):
         text = infile.read()
     encrypted_text = ''    
        
-    for char in text:            # go through each character and encrypt to specifications
-        if ord(char) in range(97,110):
-            encrypted_text += chr((ord(char) + n*m - 97)% 13 + 97)
-        elif ord(char) in range(110, 123):
+    for char in text:            
+        # go through each character and encrypt to specifications. use modulus %13 to ensure characters stay in same range for decryption
+        if ord(char) in range(97,110): # lower case a-m
+            encrypted_text += chr((ord(char) + n*m - 97)% 13 + 97)  
+        elif ord(char) in range(110, 123): lower case n-z
             encrypted_text += chr(((ord(char) - (n + m)) - 97)% 13 + 110)
-        elif ord(char) in range(65, 78):
+        elif ord(char) in range(65, 78): # upper case A-M
             encrypted_text += chr((ord(char) - n - 65)% 13 + 65)
-        elif ord(char) in range(78, 91):
+        elif ord(char) in range(78, 91): # upper case N-Z
             encrypted_text += chr((ord(char) + m**2 - 65)% 13 + 78)
         else:
-            encrypted_text += char
+            encrypted_text += char               # no change to special characters
     with open(output_text, 'w') as outfile:
         outfile.write(encrypted_text)         # write encrypted text to file
  
@@ -25,16 +26,16 @@ def decrypt_text(input_text, output_text, n, m):
  
     decrypted_text = ''
     for char in encrypted_text:                # reverse charactor encryption
-        if ((ord(char))) in range(97, 110):
+        if ((ord(char))) in range(97, 110): # lower case a-m
             decrypted_text += chr((ord(char) - n*m - 97)% 13 + 97)
-        elif ((ord(char))) in range(110, 123):
+        elif ((ord(char))) in range(110, 123):  # lower case n-z
             decrypted_text += chr(((ord(char) + (n + m)) - 97)% 13 + 110)
-        elif (ord(char)) in range(65, 78):
+        elif (ord(char)) in range(65, 78):  # upper case A-M
             decrypted_text += chr((ord(char) + n - 65)% 13 + 65)
-        elif (ord(char)) in range(78, 91):
+        elif (ord(char)) in range(78, 91):  # upper case N-Z
             decrypted_text += chr((ord(char) - m**2 - 65)% 13 + 78)
         else:
-            decrypted_text += char
+            decrypted_text += char      # no change to special characters
  
     with open(output_text, 'w') as outfile:
         outfile.write(decrypted_text)              # write decrypted text to a file
@@ -50,7 +51,7 @@ def check_decryption(original_file, decrypted_file):
  
     return original_text == decrypted_text
  
-def main():
+def main():      # function to check if the other functions operate correctly 
     n = int(input('Enter an integer "n" for encryption key: '))   # enter values for encryption key
     m = int(input('Enter an integer "m" for encryption key: '))
  
@@ -68,5 +69,6 @@ def main():
     else:
         print("Decryption failed.")
 main() 
+# sample use of individual functions entering the files to read, write and both values of the encryption key 
 # encrypt_text('raw_text.txt', 'encrypted_text.txt', 2, 2)
 # decrypt_text('encrypted_text.txt', 'decrypted_text.txt', 2, 2)
