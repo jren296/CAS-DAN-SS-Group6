@@ -55,9 +55,9 @@ def main():
     n = int(input('Enter an integer "n" for encryption key: '))   # enter values for encryption key
     m = int(input('Enter an integer "m" for encryption key: '))
  
-    input_text = 'raw_text.txt'
-    encrypted_text = 'encrypted_text.txt'
-    decrypted_text = 'decrypted_text.txt'
+    input_text = 'question1/raw_text.txt'
+    encrypted_text = 'question1/encrypted_text.txt'
+    decrypted_text = 'question1/decrypted_text.txt'
     encrypt_text(input_text, encrypted_text, n, m)
     print('Encryption complete. Encrypted text saved to "encrypted_text.txt"')
  
@@ -69,5 +69,5 @@ def main():
     else:
         print("Decryption failed.")
 main() 
-# encrypt_text('raw_text.txt', 'encrypted_text.txt', 2, 2)
-# decrypt_text('encrypted_text.txt', 'decrypted_text.txt', 2, 2)
+# encrypt_text('question1/raw_text.txt', 'question1/encrypted_text.txt', 2, 2)
+# decrypt_text('question1/encrypted_text.txt', 'question1/decrypted_text.txt', 2, 2)
