@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-data_folder = "temperatures"  # Folder where CSV files are stored
+data_folder = "Question2/temperatures"  # Folder where CSV files are stored
 
 # Store data for calculations
 monthly_temps = {month: [] for month in range(1, 13)}  # For monthly averages
@@ -44,7 +44,7 @@ average_monthly_temps = {
 
 
 # Saving averages to a file
-with open("average_temp.txt", "w") as avg_file:
+with open("Question2/average_temp.txt", "w") as avg_file:
     avg_file.write("Average Monthly Temperatures:\n")
     for month, avg_temp in average_monthly_temps.items():
        if avg_temp is not None:  # If there's data, write the average
@@ -65,7 +65,7 @@ for station_id, data in station_data.items():
         largest_range_stations.append(data['name'])
 
 # Saving results
-with open("largest_temp_range_station.txt", "w") as range_file:
+with open("Question2/largest_temp_range_station.txt", "w") as range_file:
     range_file.write("Station(s) with the Largest Temperature Range:\n")
     range_file.write(f"Range: {largest_range:.2f}\n")
     range_file.write("\n".join(largest_range_stations))
@@ -85,7 +85,7 @@ coolest_stations = [
 ]
 
 # Saving results
-with open("warmest_and_coolest_station.txt", "w") as temp_file:
+with open("Question2/warmest_and_coolest_station.txt", "w") as temp_file:
     temp_file.write("Warmest Station(s):\n")
     temp_file.write(f"Temperature: {warmest_temp:.2f}\n")
     temp_file.write("\n".join(warmest_stations))
