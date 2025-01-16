@@ -32,39 +32,33 @@ def draw_tree(t, branch_length, left_angle, right_angle, depth, reduction_factor
     # return to the original angle after drawing right branch
     t.left(right_angle)  
     
-    # draw the other branch and move the turtle back to the original position 
-    t.backward(branch_length)  # Move the turtle backward by the length of the branch
+    # if it's not the main brand (depth == 1), move the turtle back to the original position for the next branch
+    if depth < 5:  
+        t.backward(branch_length)  # Move the turtle backward by the length of the branch
 
-# main function to set parameters for the tree, including branch angles, starting length, depth, and branch length reduction
-def main():
-    # parameters for the tree
-    left_angle = 20  
-    right_angle = 25  
-    starting_length = 100  
-    depth = 5  
-    reduction_factor = 0.7  
+# parameters for the tree
+left_angle = 20  
+right_angle = 25  
+starting_length = 100  
+depth = 5  
+reduction_factor = 0.7  
 
-    # code to set up turtle and screen, with the turtle facing upwards and moving to the fastest speed
-    t = turtle.Turtle()  
-    screen = turtle.Screen()  
-    screen.bgcolor("white")  
-    t.left(90)  
-    t.speed(0)  
+# code to set up turtle and screen, with the turtle facing upwards and moving to the fastest speed
+t = turtle.Turtle()  
+screen = turtle.Screen()  
+screen.bgcolor("white")  
+t.left(90)  
+t.speed(0)  
 
-    # lift the turtle pen to avoid drawing while moving to initial position at the bottom centre of the screen and then the pen down to start drawing
-    t.penup()  
-    t.setpos(0, -200)  
-    t.pendown()  
-    # call the recursive function to draw tree
-    draw_tree(t, starting_length, left_angle, right_angle, depth, reduction_factor)
+# lift the turtle pen to avoid drawing while moving to initial position at the bottom centre of the screen and then the pen down to start drawing
+t.penup()  
+t.setpos(0, -200)  
+t.pendown()  
+# call the recursive function to draw tree
+draw_tree(t, starting_length, left_angle, right_angle, depth, reduction_factor)
 
-    # hide turtle after finish the drawing
-    t.hideturtle()
+# hide turtle after finish the drawing
+t.hideturtle()
 
-    # finish the drawing and keep the window open until closed by the user
-    turtle.done()
-
-# run the program
-if __name__ == "__main__":
-    main()
-
+# finish the drawing and keep the window open until closed by the user
+turtle.done()
