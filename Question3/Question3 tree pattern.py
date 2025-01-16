@@ -6,14 +6,14 @@ def draw_tree(t, branch_length, left_angle, right_angle, depth, reduction_factor
     if depth == 0:
         return
     
-    # main branch color is red and line thickness is 5
-    if depth == 5:  
-        t.pencolor("red")  
-        t.pensize(5)  
+    # main branch color is red and line thickness is 6
+    if depth == 6:  
+        t.pencolor("brown")  
+        t.pensize(6)  
     # green is the colour for second and third branch and line thickness is 4 and green is colour for the rest of the branch and line thickness is 2
-    elif depth == 4:  
+    elif depth == 5:  
         t.pencolor("green")  
-        t.pensize(4)  
+        t.pensize(5)  
     else:  
         t.pencolor("green")  
         t.pensize(2) 
@@ -32,16 +32,16 @@ def draw_tree(t, branch_length, left_angle, right_angle, depth, reduction_factor
     # return to the original angle after drawing right branch
     t.left(right_angle)  
     
-    # if it's not the main brand (depth == 1), move the turtle back to the original position for the next branch
-    if depth < 5:  
+    # if it's not the main branch (depth == 1), move the turtle back to the original position for the next branch
+    if depth < 6:  
         t.backward(branch_length)  # Move the turtle backward by the length of the branch
 
 # parameters for the tree
-left_angle = 20  
-right_angle = 25  
-starting_length = 100  
-depth = 5  
-reduction_factor = 0.7  
+left_angle = 30  
+right_angle = 35  
+starting_length = 110  
+depth = 6  
+reduction_factor = 0.7
 
 # code to set up turtle and screen, with the turtle facing upwards and moving to the fastest speed
 t = turtle.Turtle()  
@@ -62,3 +62,4 @@ t.hideturtle()
 
 # finish the drawing and keep the window open until closed by the user
 turtle.done()
+
